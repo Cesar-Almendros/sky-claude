@@ -220,7 +220,8 @@ The System Prompts editor currently overwrites with no history. Add a lightweigh
 ### 6. Production-Grade AWS Deployment with Bedrock Foundation Models
 Migrate the current single-container setup to a scalable AWS-native architecture. Replace the direct Anthropic API calls with **Amazon Bedrock** (Claude Sonnet via `anthropic.claude-sonnet-4-5` on Bedrock) to gain VPC-level network isolation, IAM-based access control, and no API key management. The target infrastructure: **ECS Fargate** for the FastAPI backend (auto-scaling based on concurrent chat sessions), **CloudFront + S3** for the React frontend, **RDS PostgreSQL** replacing SQLite for multi-user concurrency, and **ElastiCache Redis** for caching Power BI tokens and DAX results. LangGraph agent state should move to **Amazon DynamoDB** for persistence across container restarts. This architecture supports enterprise SSO (via Cognito), audit logging to CloudWatch, and meets the data-residency requirements typical in airline group environments.
 
-
+### 6. Production-Grade AWS Deployment with Bedrock Foundation Models
+NTT DATA must plan from the outset for the inclusion of governance capabilities across the system, including controls over prompts, models, context, tools, guardrails, evaluation, observability, human approval, and runtime behavior. These capabilities are not required to be included in the initial product iterations; however, they must be incorporated into the solution’s architectural design from the outset to avoid future rework.
 ---
 
 > **Note to contributors:** The items above are a starting point, not a ceiling. Please review the codebase and freely modify, extend, or reprioritise this backlog — and add any items you consider relevant for the stabilisation, scalability, and efficiency of this platform.
